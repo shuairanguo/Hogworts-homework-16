@@ -23,7 +23,7 @@ class TestCalc:
         assert expect == self.calc.sub(a, b)
 
     @pytest.mark.parametrize("a,b,expect", [
-        (0, 1000, 0), (100, 100, 10000), (-1, -1, 1)
+        (0.1, 1000, 100), (100, 100, 10000), (-1, -1, 1)
     ], ids=["int", "minus", "bigint"])
     def test_mul(self, a, b, expect):
         assert expect == self.calc.mul(a, b)
