@@ -6,8 +6,8 @@ from test_selenium.test_web_weixin.page.contact_page import ContactPage
 
 class AddMember(BasePage):
     _location_username = (By.ID, "username")
-    _location_acctid = (By.ID,"memberAdd_acctid")
-    _location_Add_phone = (By.ID,"memberAdd_phone")
+    _location_acctid = (By.ID, "memberAdd_acctid")
+    _location_Add_phone = (By.ID, "memberAdd_phone")
 
     def add_member(self):
         """添加成员操作

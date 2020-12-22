@@ -5,11 +5,11 @@ from selenium.webdriver.support.wait import WebDriverWait
 from test_selenium.test_web_weixin.page.base_page import BasePage
 
 
-
-
 class ContactPage(BasePage):
     _location_member_list = (By.CSS_SELECTOR, ".member_colRight_memberTable_td:nth-child(2)")
-    _location_goto_add_member= (By.CSS_SELECTOR, ".ww_operationBar .js_add_member")
+    _location_goto_add_member = (By.CSS_SELECTOR, ".ww_operationBar .js_add_member")
+    _location_depart_list = (By.XPATH,'//a[@class="jstree-anchor"]')
+
     def goto_add_member(self):
         # 解决循环导入的问题
         from test_selenium.test_web_weixin.page.add_member_page import AddMember
@@ -34,3 +34,13 @@ class ContactPage(BasePage):
         # 列表推导式
         member_list_res = [i.text for i in member_list]
         return member_list_res
+
+
+    def get_depart(self):
+        """
+        获取所有部门
+        :return:
+        """
+        depart_list = self.finds(*self._location_depart_list)
+        depart_list_res = [i.text for i in depart_list]
+        return depart_list_res
