@@ -4,6 +4,7 @@ import time
 import pytest
 from selenium import webdriver
 import yaml
+from selenium.webdriver.common.by import By
 
 
 # chrome --remote-debugging-port=9222
