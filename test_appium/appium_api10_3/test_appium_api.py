@@ -1,3 +1,5 @@
+import time
+
 import pytest
 from appium import webdriver
 from appium.webdriver.common.mobileby import MobileBy
@@ -18,6 +20,8 @@ class TestWebDriverWait:
         desired_caps['skipServerInstallation'] = "true"
         desired_caps['unicodeKeyBoard'] = 'true'
         desired_caps['resetKeyBoard'] = 'true'
+        # 设置页面等待空闲状态的时间
+        desired_caps['setting[waitForIdleTimeout]'] = 0
 
         self.driver = webdriver.Remote("http://127.0.0.1:4723/wd/hub", desired_caps)
         self.driver.implicitly_wait(15)
@@ -26,5 +30,14 @@ class TestWebDriverWait:
         pass
 
     def test_search(self):
-        self.driver.find_element(MobileBy.ID,'com.xueqiu.android:id/tv_search').click()
-        self.driver.find_element(MobileBy.ID,"com.xueqiu.android:id/search_input_text").send_keys("alibaba")
+        self.driver.find_element(MobileBy.XPATH, '//*[@text="工作台"]').click()
+        self.driver.find_element(MobileBy.
+                                 ANDROID_UIAUTOMATOR, 'new UiScrollable(new UiSelector().'
+                                                      'scrollable(true).instance(0)).'
+                                                      'scrollIntoView(new UiSelector().'
+                                                      'text("打卡").instance(0));').click()
+        self.driver.find_element(MobileBy.XPATH, '//*[@text="外出打卡"]').click()
+        self.driver.find_element(MobileBy.XPATH, '//*[contains(@text,"次外出")]').click()
+
+        WebDriverWait(self.driver, 10).until(lambda x: "外出打卡成功" in x.page_source)
+        assert "外出打卡成功" in self.driver.page_source
