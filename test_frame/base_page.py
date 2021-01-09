@@ -13,10 +13,13 @@ class BasePage:
         self.driver = driver
         self.black_list = [(By.XPATH, "//*[@resource-id='com.xueqiu.android:id/iv_close']")]
 
+    @black_wrapper
     def find(self, by, locator):
         return self.driver.find_element(by, locator)
 
-    @black_wrapper
+    def finds(self, by, locator):
+        return self.driver.find_elements(by, locator)
+
     def find_and_click(self, by, locator):
         self.find(by, locator).click()
 

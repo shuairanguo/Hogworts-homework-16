@@ -1,19 +1,18 @@
 from appium import webdriver
 
 from test_frame.base_page import BasePage
-from test_frame.page.main import Main
+from test_frame.page.main import MainPage
 
 
 class App(BasePage):
-
     def start(self):
-        if self.driver is None:
-            # 启动app
+        if self.driver == None:
+            # 启动appÅ
             # 定义了一个字典
             caps = {}
             caps["platformName"] = "Android"
-            caps["#deviceName"] = "dcd7fa16"
-            caps["appPackage"] = "com.xueqiu.android"
+            caps["#deviceName"] = "hogwarts"
+            caps["appPackage"] = "com.xueqiu.adnriod"
             caps["appActivity"] = ".view.WelcomeActivityAlias"
             # noReset 保留缓存， 比如登录状态
             caps["noReset"] = "True"
@@ -21,12 +20,13 @@ class App(BasePage):
             # caps["dontStopAppOnReset"] = "true"
             caps['skipDeviceInitialization'] = 'true'
             caps['skipServerInstallation'] = 'true'
-
+            # caps["settings[waitForIdleTimeout]"] = 0
             # 关键  localhost:4723  本机ip:server端口
             self.driver = webdriver.Remote("http://127.0.0.1:4723/wd/hub", caps)
             self.driver.implicitly_wait(5)
         else:
             self.driver.launch_app()
+            # self.driver.start_activity(package,activity)
 
         return self
 
@@ -40,6 +40,6 @@ class App(BasePage):
         # 停止 app
         self.driver.quit()
 
-    def goto_main(self) -> Main:
+    def goto_main(self) -> MainPage:
         # 进入到首页
-        return Main(self.driver)
+        return MainPage(self.driver)
