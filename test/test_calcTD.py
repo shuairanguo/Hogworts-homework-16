@@ -13,7 +13,7 @@ class TestCalc:
     #     print("结束计算")
 
     def get_datas():
-        with open("./data.yml") as f:
+        with open("../data.yml") as f:
             datas = yaml.safe_load(f)
             add_datas = datas["add"]
             sub_datas = datas["sub"]

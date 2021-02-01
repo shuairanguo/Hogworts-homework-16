@@ -1,17 +1,12 @@
-from appium.webdriver.common.mobileby import MobileBy
-
-from test_appium.po.page.base_page import BasePage
-from test_appium.po.page.contactadd_page import ContactAddPage
+from test_appium.po.page.contact_add_page import ContractAdd
 
 
-class MemberInviteMenuPage(BasePage):
+class MemberInviteMemberPage(object):
 
     def add_member_menual(self):
-        # 点击【手动输入添加】
-        self.find(MobileBy.XPATH, "//*[@text='手动输入添加']").click()
-
-        return ContactAddPage(self.driver)
-
-    def get_toast(self):
-        result = self.get_toast_text()
-        return result
+        """
+        进入添加成员信息
+        :return:
+        """
+        # todo 点击手动添加成员信息
+        return ContractAdd()

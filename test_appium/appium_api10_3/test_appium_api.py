@@ -11,9 +11,9 @@ class TestWebDriverWait:
     def setup(self):
         desired_caps = {}
         desired_caps["platformName"] = "Android"
-        # desired_caps["deviceName"] = "emulator-5554"
-        desired_caps["deviceName"] = "dcd7fa16"
-        # desired_caps["platformVersion"] = "10.0"
+        desired_caps["deviceName"] = "emulator-5554"
+        # desired_caps["deviceName"] = "dcd7fa16"
+        desired_caps["platformVersion"] = "6.0。1"
         desired_caps["appPackage"] = "com.tencent.wework"
         desired_caps["appActivity"] = ".launch.LaunchSplashActivity"
         desired_caps["noReset"] = "true"
