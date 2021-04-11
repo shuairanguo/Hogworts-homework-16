@@ -8,14 +8,15 @@ api = Api(app)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:gsr066567@localhost:3306/testcase?charset=utf8mb4'
 db = SQLAlchemy(app)
 
+
 @app.route('/hello/')
 @app.route('/hello/<name>')
 def hello(name=None):
     return render_template('hello.html', name=name)
 
 
-
 class TestCase(db.Model):
+
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(80), unique=False, nullable=True)
     description = db.Column(db.String(80), unique=False, nullable=True)
@@ -37,8 +38,8 @@ class HelloWorld(Resource):
 
         print(testcase)
         print(type(testcase))
-        return "ok"
-        # return render_template('testcase.html', testcase=testcase)
+        # return "ok"
+        return testcase
 
     def post(self, tmp):
         print(request.data)
