@@ -2,11 +2,13 @@ from flask import Flask, render_template, jsonify
 from flask import request
 from flask_restful import Resource, Api
 from flask_sqlalchemy import SQLAlchemy
-
+from flask_cors import CORS
 app = Flask(__name__)
+CORS(app)
 api = Api(app)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:gsr066567@localhost:3306/testcase?charset=utf8mb4'
 db = SQLAlchemy(app)
+
 
 
 @app.route('/hello/')
